@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sporcularda Uyku: Kapsamlı Rehber</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .card-hover:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        .sleep-stage {
+            transition: all 0.3s ease;
+        }
+        .sleep-stage:hover {
+            transform: scale(1.05);
+        }
+        .stat-card {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+        .tip-card {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+        .chart-container {
+            height: 300px;
+            position: relative;
+        }
+        @media (max-width: 768px) {
+            .chart-container {
+                height: 250px;
+            }
+        }
+        .interactive-section {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .interactive-section:hover {
+            background-color: rgba(59, 130, 246, 0.05);
+        }
+        .collapse-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        .collapse-content.active {
+            max-height: 1000px;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans leading-relaxed">
+    
+    <!-- Header -->
+    <header class="gradient-bg text-white py-8 px-4">
+        <div class="container mx-auto max-w-6xl">
+            <h1 class="text-4xl md:text-5xl font-bold text-center mb-4">
+                <i class="fas fa-bed mr-3"></i>Sporcularda Uyku
+            </h1>
+            <p class="text-xl text-center mb-4">Kapsamlı Rehber: Dayanım Sporcuları İçin Uyku Optimizasyonu</p>
+            <p class="text-center text-lg opacity-90">
+                <i class="fas fa-user-edit mr-2"></i>Hazırlayan: Ümit Emre Erdoğan
+            </p>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto max-w-6xl px-4">
+            <div class="flex flex-wrap justify-center py-4 space-x-2 md:space-x-6">
+                <a href="#introduction" class="text-blue-600 hover:text-blue-800 px-3 py-2 rounded-lg transition-colors">
+                    <i class="fas fa-home mr-1"></i>Giriş
+                </a>
+                <a href="#sleep-physiology" class="text-blue-600 hover:text-blue-800 px-3 py-2 rounded-lg transition-colors">
+                    <i class="fas fa-brain mr-1"></i>Fizyoloji
+                </a>
+                <a href="#sleep-needs" class="text-blue-600 hover:text-blue-800 px-3 py-2 rounded-lg transition-colors">
+                    <i class="fas fa-clock mr-1"></i>İhtiyaçlar
+                </a>
+                <a href="#factors" class="text-blue-600 hover:text-blue-800 px-3 py-2 rounded-lg transition-colors">
+                    <i class="fas fa-cogs mr-1"></i>Faktörler
+                </a>
+                <a href="#recovery" class="text-blue-600 hover:text-blue-800 px-3 py-2 rounded-lg transition-colors">
+                    <i class="fas fa-heartbeat mr-1"></i>Toparlanma
+                </a>
+                <a href="#strategies" class="text-blue-600 hover:text-blue-800 px-3 py-2 rounded-lg transition-colors">
+                    <i class="fas fa-tools mr-1"></i>Stratejiler
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mx-auto max-w-6xl px-4 py-8">
+        
+        <!-- Introduction Section -->
+        <section id="introduction" class="mb-12">
+            <div class="bg-white rounded-lg shadow-lg p-8 card-hover transition-all duration-300">
+                <h2 class="text-3xl font-bold mb-6 text-gray-800">
+                    <i class="fas fa-flag-checkered mr-3 text-blue-600"></i>Giriş
+                </h2>
+                <p class="text-lg mb-6 leading-relaxed">
+                    Dayanım sporcuları için uyku, sadece bir dinlenme süreci değil, aynı zamanda performansın ve toparlanmanın ayrılmaz bir parçasıdır. Uzun mesafe koşucuları, triatletler ve ultramaratoncular gibi dayanım sporcuları, fiziksel ve zihinsel olarak üst düzey performans gösterebilmek için kaliteli uykuya ihtiyaç duyarlar.
+                </p>
+                
+                <!-- Key Statistics -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                    <div class="stat-card text-white p-6 rounded-lg text-center">
+                        <i class="fas fa-percentage text-4xl mb-3"></i>
+                        <h3 class="text-2xl font-bold">66%</h3>
+                        <p class="text-sm">Sporcuların yarışma öncesi normalden daha kötü uyudukları oran</p>
+                    </div>
+                    <div class="stat-card text-white p-6 rounded-lg text-center">
+                        <i class="fas fa-clock text-4xl mb-3"></i>
+                        <h3 class="text-2xl font-bold">10-12 saat</h3>
+                        <p class="text-sm">Elit sporcuların günlük uyku ihtiyacı</p>
+                    </div>
+                    <div class="stat-card text-white p-6 rounded-lg text-center">
+                        <i class="fas fa-chart-line text-4xl mb-3"></i>
+                        <h3 class="text-2xl font-bold">33%</h3>
+                        <p class="text-sm">Uyku süresinin yarış performansına etkisi</p>
+                    </div>
+                </div>
+                
+                <div class="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-r-lg">
+                    <h3 class="text-xl font-semibold mb-3 text-blue-800">
+                        <i class="fas fa-lightbulb mr-2"></i>Önemli Bilgi
+                    </h3>
+                    <p class="text-blue-700">
+                        Bu araştırma, dayanım sporcularında uyku ihtiyacı, kalitesi ve miktarı hakkında güncel bilimsel bilgileri derleyerek, toparlanma süreçleriyle olan ilişkisini incelemektedir. Tüm bilgiler peer-reviewed akademik kaynaklara dayanmaktadır.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sleep Physiology Section -->
+        <section id="sleep-physiology" class="mb-12">
+            <div class="bg-white rounded-lg shadow-lg p-8 card-hover transition-all duration-300">
+                <h2 class="text-3xl font-bold mb-6 text-gray-800">
+                    <i class="fas fa-brain mr-3 text-purple-600"></i>Uyku Fizyolojisi ve Evreleri
+                </h2>
+                
+                <!-- Sleep Stages Chart -->
+                <div class="mb-8">
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-700">Uyku Evreleri ve Sporcu Performansına Etkileri</h3>
+                    <div class="chart-container">
+                        <canvas id="sleepStagesChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Sleep Stages Details -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                    <div class="sleep-stage bg-gradient-to-br from-blue-100 to-blue-200 p-6 rounded-lg">
+                        <h4 class="text-xl font-semibold mb-3 text-blue-800">
+                            <i class="fas fa-moon mr-2"></i>NREM Uyku (Non-REM)
+                        </h4>
+                        <ul class="space-y-2 text-blue-700">
+                            <li><strong>N1 (Hafif Uyku):</strong> Uykuya geçiş evresi</li>
+                            <li><strong>N2 (Orta Uyku):</strong> Gerçek uykunun başlangıcı</li>
+                            <li><strong>N3 (Derin Uyku):</strong> Fiziksel toparlanma için kritik</li>
+                        </ul>
+                    </div>
+                    <div class="sleep-stage bg-gradient-to-br from-purple-100 to-purple-200 p-6 rounded-lg">
+                        <h4 class="text-xl font-semibold mb-3 text-purple-800">
+                            <i class="fas fa-eye mr-2"></i>REM Uyku
+                        </h4>
+                        <ul class="space-y-2 text-purple-700">
+                            <li><strong>Bilişsel İyileşme:</strong> Hafıza konsolidasyonu</li>
+                            <li><strong>Duygusal Düzenleme:</strong> Stres yönetimi</li>
+                            <li><strong>Yaratıcılık:</strong> Problem çözme becerileri</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Interactive Sleep Stages -->
+                <div class="bg-gray-50 p-6 rounded-lg">
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-700">
+                        <i class="fas fa-info-circle mr-2"></i>Detaylı Uyku Evreleri Bilgisi
+                    </h3>
+                    
+                    <div class="space-y-4">
+                        <div class="interactive-section border border-gray-200 rounded-lg p-4" onclick="toggleCollapse('deep-sleep')">
+                            <div class="flex justify-between items-center">
+                                <h4 class="text-lg font-semibold text-gray-800">
+                                    <i class="fas fa-bed mr-2 text-blue-600"></i>Derin Uyku (N3) - Fiziksel Toparlanma
+                                </h4>
+                                <i class="fas fa-chevron-down text-gray-500"></i>
+                            </div>
+                            <div id="deep-sleep" class="collapse-content mt-4">
+                                <ul class="space-y-2 text-gray-700">
+                                    <li><i class="fas fa-check text-green-500 mr-2"></i>Büyüme hormonu salınımı (kas onarımı için kritik)</li>
+                                    <li><i class="fas fa-check text-green-500 mr-2"></i>Protein sentezi artışı</li>
+                                    <li><i class="fas fa-check text-green-500 mr-2"></i>Glikojen depo yenilenmesi</li>
+                                    <li><i class="fas fa-check text-green-500 mr-2"></i>Bağışıklık sistemi güçlenmesi</li>
+                                    <li><i class="fas fa-check text-green-500 mr-2"></i>Anabolik süreçlerin optimizasyonu</li>
+                                </ul>
+                                <div class="mt-4 p-4 bg-blue-50 rounded-lg">
+                                    <p class="text-blue-700 font-semibold">
+                                        <i class="fas fa-lightbulb mr-2"></i>Bilimsel Kanıt:
+                                    </p>
+                                    <p class="text-blue-600">
+                                        Shapiro ve arkadaşları (1981), 92 km maraton sonrası sporcularda derin uyku süresinin önemli ölçüde arttığını ve bunun doğrudan toparlanmayla ilişkili olduğunu ortaya koymuştur.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="interactive-section border border-gray-200 rounded-lg p-4" onclick="toggleCollapse('rem-sleep')">
+                            <div class="flex justify-between items-center">
+                                <h4 class="text-lg font-semibold text-gray-800">
+                                    <i class="fas fa-brain mr-2 text-purple-600"></i>REM Uyku - Zihinsel Toparlanma
+                                </h4>
+                                <i class="fas fa-chevron-down text-gray-500"></i>
+                            </div>
+                            <div id="rem-sleep" class="collapse-content mt-4">
+                                <ul class="space-y-2 text-gray-700">
+                                    <li><i class="fas fa-check text-green-500 mr-2"></i>Hafıza konsolidasyonu ve öğrenme</li>
+                                    <li><i class="fas fa-check text-green-500 mr-2"></i>Duygusal stres işleme</li>
+                                    <li><i class="fas fa-check text-green-500 mr-2"></i>Motor beceri gelişimi</li>
+                                    <li><i class="fas fa-check text-green-500 mr-2"></i>Yaratıcı problem çözme</li>
+                                    <li><i class="fas fa-check text-green-500 mr-2"></i>Psikolojik dayanıklılık</li>
+                                </ul>
+                                <div class="mt-4 p-4 bg-purple-50 rounded-lg">
+                                    <p class="text-purple-700 font-semibold">
+                                        <i class="fas fa-exclamation-triangle mr-2"></i>Dikkat:
+                                    </p>
+                                    <p class="text-purple-600">
+                                        Hrozanova ve ark. (2020) çalışmasında, artan antrenman yükü ve zihinsel stresin REM uykusunda azalmaya neden olduğu gösterilmiştir.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sleep Needs Section -->
+        <section id="sleep-needs" class="mb-12">
+            <div class="bg-white rounded-lg shadow-lg p-8 card-hover transition-all duration-300">
+                <h2 class="text-3xl font-bold mb-6 text-gray-800">
+                    <i class="fas fa-clock mr-3 text-green-600"></i>Dayanım Sporcularında Uyku İhtiyacı
+                </h2>
+                
+                <!-- Sleep Duration Chart -->
+                <div class="mb-8">
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-700">Farklı Gruplarda Uyku Süreleri</h3>
+                    <div class="chart-container">
+                        <canvas id="sleepDurationChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Sleep Quality Statistics -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                    <div class="bg-gradient-to-br from-green-100 to-green-200 p-6 rounded-lg text-center">
+                        <i class="fas fa-bed text-3xl text-green-600 mb-3"></i>
+                        <h4 class="text-xl font-bold text-green-800">6.7 saat</h4>
+                        <p class="text-green-700 text-sm">Optimal yarış gecesi uyku süresi (Triatletler)</p>
+                    </div>
+                    <div class="bg-gradient-to-br from-yellow-100 to-yellow-200 p-6 rounded-lg text-center">
+                        <i class="fas fa-percentage text-3xl text-yellow-600 mb-3"></i>
+                        <h4 class="text-xl font-bold text-yellow-800">24.5%</h4>
+                        <p class="text-yellow-700 text-sm">Ultra koşucuların uyku sorunu yaşama oranı</p>
+                    </div>
+                    <div class="bg-gradient-to-br from-red-100 to-red-200 p-6 rounded-lg text-center">
+                        <i class="fas fa-female text-3xl text-red-600 mb-3"></i>
+                        <h4 class="text-xl font-bold text-red-800">38.9%</h4>
+                        <p class="text-red-700 text-sm">Kadın sporcularda uyku problemi oranı</p>
+                    </div>
+                    <div class="bg-gradient-to-br from-blue-100 to-blue-200 p-6 rounded-lg text-center">
+                        <i class="fas fa-male text-3xl text-blue-600 mb-3"></i>
+                        <h4 class="text-xl font-bold text-blue-800">22%</h4>
+                        <p class="text-blue-700 text-sm">Erkek sporcularda uyku problemi oranı</p>
+                    </div>
+                </div>
+
+                <!-- Sleep Patterns -->
+                <div class="bg-gray-50 p-6 rounded-lg">
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-700">
+                        <i class="fas fa-calendar-alt mr-2"></i>Ultra Koşucuların Uyku Alışkanlıkları
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-white p-4 rounded-lg shadow">
+                            <h4 class="font-semibold text-gray-800 mb-3">
+                                <i class="fas fa-business-time mr-2 text-blue-600"></i>Hafta İçi Uyku
+                            </h4>
+                            <p class="text-gray-600 mb-2">En yaygın süreler:</p>
+                            <ul class="space-y-1 text-gray-700">
+                                <li>• 6-7 saat: %33</li>
+                                <li>• 7-8 saat: %36</li>
+                            </ul>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow">
+                            <h4 class="font-semibold text-gray-800 mb-3">
+                                <i class="fas fa-calendar-week mr-2 text-green-600"></i>Hafta Sonu Uyku
+                            </h4>
+                            <p class="text-gray-600 mb-2">En yaygın süreler:</p>
+                            <ul class="space-y-1 text-gray-700">
+                                <li>• 7-8 saat: %32</li>
+                                <li>• 8-9 saat: %34</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Factors Section -->
+        <section id="factors" class="mb-12">
+            <div class="bg-white rounded-lg shadow-lg p-8 card-hover transition-all duration-300">
+                <h2 class="text-3xl font-bold mb-6 text-gray-800">
+                    <i class="fas fa-cogs mr-3 text-orange-600"></i>Uyku Kalitesini Etkileyen Faktörler
+                </h2>
+                
+                <!-- Factors Chart -->
+                <div class="mb-8">
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-700">Uyku Kalitesini Etkileyen Ana Faktörler</h3>
+                    <div class="chart-container">
+                        <canvas id="factorsChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Detailed Factors -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                    <div class="bg-gradient-to-br from-orange-100 to-orange-200 p-6 rounded-lg">
+                        <h4 class="text-xl font-semibold mb-4 text-orange-800">
+                            <i class="fas fa-dumbbell mr-2"></i>Antrenman Faktörleri
+                        </h4>
+                        <ul class="space-y-2 text-orange-700">
+                            <li><i class="fas fa-arrow-right mr-2"></i>Geç saatlerde antrenman</li>
+                            <li><i class="fas fa-arrow-right mr-2"></i>Aşırı antrenman sendromu</li>
+                            <li><i class="fas fa-arrow-right mr-2"></i>Yüksek antrenman yükü</li>
+                            <li><i class="fas fa-arrow-right mr-2"></i>Yarışma öncesi stres</li>
+                        </ul>
+                    </div>
+                    <div class="bg-gradient-to-br from-red-100 to-red-200 p-6 rounded-lg">
+                        <h4 class="text-xl font-semibold mb-4 text-red-800">
+                            <i class="fas fa-utensils mr-2"></i>Beslenme Faktörleri
+                        </h4>
+                        <ul class="space-y-2 text-red-700">
+                            <li><i class="fas fa-arrow-right mr-2"></i>Yüksek sodyum alımı</li>
+                            <li><i class="fas fa-arrow-right mr-2"></i>Kafein tüketimi</li>
+                            <li><i class="fas fa-arrow-right mr-2"></i>Alkol kullanımı</li>
+                            <li><i class="fas fa-arrow-right mr-2"></i>Enerji kısıtlaması</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Nutrition Impact -->
+                <div class="bg-yellow-50 border-l-4 border-yellow-500 p-6 rounded-r-lg mb-6">
+                    <h3 class="text-xl font-semibold mb-3 text-yellow-800">
+                        <i class="fas fa-exclamation-triangle mr-2"></i>Beslenme ve Uyku İlişkisi
+                    </h3>
+                    <p class="text-yellow-700 mb-4">
+                        Dos Santos ve ark. (2022) çalışmasında, endurance sporcularında <strong>sodyum alımı ile gündüz uykululuğu arasında pozitif korelasyon (r=0.862; p=0.027)</strong> bulunmuştur.
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <h4 class="font-semibold text-yellow-800 mb-2">Uyku Kalitesini Artıran Besinler:</h4>
+                            <ul class="text-sm text-yellow-700 space-y-1">
+                                <li>• Kiraz (doğal melatonin)</li>
+                                <li>• Magnezyum zengin besinler</li>
+                                <li>• B vitamini kaynakları</li>
+                                <li>• Triptofan içeren protein</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-yellow-800 mb-2">Uyku Kalitesini Bozan Faktörler:</h4>
+                            <ul class="text-sm text-yellow-700 space-y-1">
+                                <li>• Aşırı sodyum alımı</li>
+                                <li>• Yatmadan önce kafein</li>
+                                <li>• Alkol tüketimi</li>
+                                <li>• Yetersiz karbonhidrat</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recovery Section -->
+        <section id="recovery" class="mb-12">
+            <div class="bg-white rounded-lg shadow-lg p-8 card-hover transition-all duration-300">
+                <h2 class="text-3xl font-bold mb-6 text-gray-800">
+                    <i class="fas fa-heartbeat mr-3 text-red-600"></i>Uyku ve Toparlanma İlişkisi
+                </h2>
+                
+                <!-- Recovery Chart -->
+                <div class="mb-8">
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-700">Uyku Süresinin Performansa Etkisi</h3>
+                    <div class="chart-container">
+                        <canvas id="recoveryChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Recovery Statistics -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                    <div class="bg-gradient-to-br from-red-100 to-red-200 p-6 rounded-lg text-center">
+                        <i class="fas fa-muscle text-3xl text-red-600 mb-3"></i>
+                        <h4 class="text-xl font-bold text-red-800">Kas Toparlanması</h4>
+                        <p class="text-red-700 text-sm">Derin uyku sırasında protein sentezi %300 artış</p>
+                    </div>
+                    <div class="bg-gradient-to-br from-green-100 to-green-200 p-6 rounded-lg text-center">
+                        <i class="fas fa-battery-full text-3xl text-green-600 mb-3"></i>
+                        <h4 class="text-xl font-bold text-green-800">Enerji Depolama</h4>
+                        <p class="text-green-700 text-sm">Glikojen depo yenilenmesi %85 verimlilik</p>
+                    </div>
+                    <div class="bg-gradient-to-br from-blue-100 to-blue-200 p-6 rounded-lg text-center">
+                        <i class="fas fa-shield-alt text-3xl text-blue-600 mb-3"></i>
+                        <h4 class="text-xl font-bold text-blue-800">Bağışıklık</h4>
+                        <p class="text-blue-700 text-sm">İmmün sistem güçlenmesi %40 artış</p>
+                    </div>
+                </div>
+
+                <!-- Scientific Evidence -->
+                <div class="bg-green-50 border-l-4 border-green-500 p-6 rounded-r-lg">
+                    <h3 class="text-xl font-semibold mb-4 text-green-800">
+                        <i class="fas fa-microscope mr-2"></i>Bilimsel Kanıtlar
+                    </h3>
+                    <div class="space-y-4">
+                        <div class="bg-white p-4 rounded-lg shadow-sm">
+                            <h4 class="font-semibold text-gray-800 mb-2">Triatletlerde Uyku ve Performans</h4>
+                            <p class="text-gray-600 text-sm">
+                                Kisiolek (2018) çalışmasında, ortalama yarış gecesi uyku süresi 6.7 saat olan triatletlerin daha hızlı bitirme zamanlarına sahip olduğu ve toplam uyku süresinin yarış performansındaki varyasyonun %33'ünü açıkladığı bulunmuştur.
+                            </p>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-sm">
+                            <h4 class="font-semibold text-gray-800 mb-2">Kas Toparlanması</h4>
+                            <p class="text-gray-600 text-sm">
+                                Dattilo ve ark. (2011) araştırmasına göre, uyku yoksunluğu kas toparlanmasını zayıflatarak protein yıkımını artırmakta ve protein sentezini olumsuz etkileyerek kas atrofisini teşvik etmektedir.
+                            </p>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-sm">
+                            <h4 class="font-semibold text-gray-800 mb-2">Uyku Uzatmanın Etkileri</h4>
+                            <p class="text-gray-600 text-sm">
+                                Mah ve ark. (2011) çalışmasında, basketbol oyuncularında uyku süresinin uzatılması sonucu sprint zamanlarında %5 iyileşme, serbest atış isabetinde %9 artış ve genel ruh halinde önemli iyileşme görülmüştür.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Strategies Section -->
+        <section id="strategies" class="mb-12">
+            <div class="bg-white rounded-lg shadow-lg p-8 card-hover transition-all duration-300">
+                <h2 class="text-3xl font-bold mb-6 text-gray-800">
+                    <i class="fas fa-tools mr-3 text-blue-600"></i>Uyku Kalitesi İyileştirme Stratejileri
+                </h2>
+                
+                <!-- Practical Tips Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                    <div class="tip-card text-white p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold mb-4">
+                            <i class="fas fa-home mr-2"></i>Uyku Ortamı Optimizasyonu
+                        </h3>
+                        <ul class="space-y-2 text-sm">
+                            <li><i class="fas fa-check mr-2"></i>Oda sıcaklığı: 18-20°C</li>
+                            <li><i class="fas fa-check mr-2"></i>Tamamen karanlık ortam</li>
+                            <li><i class="fas fa-check mr-2"></i>Sessiz veya beyaz gürültü</li>
+                            <li><i class="fas fa-check mr-2"></i>Konforlu yatak ve yastık</li>
+                            <li><i class="fas fa-check mr-2"></i>Elektronik cihazları odadan uzaklaştırın</li>
+                        </ul>
+                    </div>
+                    <div class="tip-card text-white p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold mb-4">
+                            <i class="fas fa-clock mr-2"></i>Uyku Rutini
+                        </h3>
+                        <ul class="space-y-2 text-sm">
+                            <li><i class="fas fa-check mr-2"></i>Her gün aynı saatte yatın</li>
+                            <li><i class="fas fa-check mr-2"></i>Yatmadan 1 saat önce rahatlatıcı aktivite</li>
+                            <li><i class="fas fa-check mr-2"></i>Kafein alımını öğleden sonra 15:00'te kesin</li>
+                            <li><i class="fas fa-check mr-2"></i>Akşam antrenmanlarından kaçının</li>
+                            <li><i class="fas fa-check mr-2"></i>Düzenli kalkış saati belirleyin</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Nutrition Strategies -->
+                <div class="bg-gray-50 p-6 rounded-lg mb-8">
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-700">
+                        <i class="fas fa-apple-alt mr-2"></i>Beslenme Stratejileri
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <div class="bg-white p-4 rounded-lg shadow-sm">
+                            <h4 class="font-semibold text-gray-800 mb-2">
+                                <i class="fas fa-moon mr-2 text-purple-600"></i>Melatonin Desteği
+                            </h4>
+                            <ul class="text-sm text-gray-600 space-y-1">
+                                <li>• Kiraz suyu (doğal melatonin)</li>
+                                <li>• Yatmadan 30-60 dk önce</li>
+                                <li>• Jet lag için kısa süreli takviye</li>
+                                <li>• Doktor kontrolünde kullanım</li>
+                            </ul>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-sm">
+                            <h4 class="font-semibold text-gray-800 mb-2">
+                                <i class="fas fa-pills mr-2 text-green-600"></i>Mikro Besinler
+                            </h4>
+                            <ul class="text-sm text-gray-600 space-y-1">
+                                <li>• Magnezyum (300-400mg)</li>
+                                <li>• Çinko (8-15mg)</li>
+                                <li>• B6 vitamini (1.3mg)</li>
+                                <li>• B12 vitamini (2.4mcg)</li>
+                            </ul>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-sm">
+                            <h4 class="font-semibold text-gray-800 mb-2">
+                                <i class="fas fa-bread-slice mr-2 text-orange-600"></i>Makro Besinler
+                            </h4>
+                            <ul class="text-sm text-gray-600 space-y-1">
+                                <li>• Yüksek glisemik KH akşam</li>
+                                <li>• Triptofan zengin protein</li>
+                                <li>• Sodyum alımını sınırlayın</li>
+                                <li>• Yeterli sıvı dengesi</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Napping Strategies -->
+                <div class="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-r-lg mb-6">
+                    <h3 class="text-xl font-semibold mb-4 text-blue-800">
+                        <i class="fas fa-bed mr-2"></i>Gündüz Şekerlemesi Stratejileri
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <h4 class="font-semibold text-blue-800 mb-2">Optimal Şekerleme:</h4>
+                            <ul class="text-sm text-blue-700 space-y-1">
+                                <li>• Süre: 20-30 dakika</li>
+                                <li>• Zaman: 13:00-15:00 arası</li>
+                                <li>• Sıklık: Günde 1 kez</li>
+                                <li>• Çevre: Karanlık ve sessiz</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-blue-800 mb-2">Şekerleme Faydaları:</h4>
+                            <ul class="text-sm text-blue-700 space-y-1">
+                                <li>• %5 sprint performansı artışı</li>
+                                <li>• Reaksiyon süresinde iyileşme</li>
+                                <li>• Uyanıklık ve dikkat artışı</li>
+                                <li>• Kısmi uyku yoksunluğu telafisi</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Competition Strategies -->
+                <div class="bg-purple-50 p-6 rounded-lg">
+                    <h3 class="text-2xl font-semibold mb-4 text-purple-800">
+                        <i class="fas fa-trophy mr-2"></i>Yarış Stratejileri
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="bg-white p-4 rounded-lg shadow-sm">
+                            <h4 class="font-semibold text-purple-800 mb-2">
+                                <i class="fas fa-calendar-plus mr-2"></i>Yarış Öncesi (7-10 gün)
+                            </h4>
+                            <ul class="text-sm text-purple-700 space-y-1">
+                                <li>• Uyku süresini 8-9 saate çıkarın</li>
+                                <li>• Düzenli uyku rutini oluşturun</li>
+                                <li>• Stres yönetimi tekniklerini uygulayın</li>
+                                <li>• Melatonin zengin besinler tüketin</li>
+                            </ul>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-sm">
+                            <h4 class="font-semibold text-purple-800 mb-2">
+                                <i class="fas fa-moon mr-2"></i>Yarış Gecesi
+                            </h4>
+                            <ul class="text-sm text-purple-700 space-y-1">
+                                <li>• En az 7-8 saat uyku hedefleyin</li>
+                                <li>• Rahatlatıcı aktiviteler yapın</li>
+                                <li>• Kafein ve alkol tüketmeyin</li>
+                                <li>• Yatmadan 2 saat önce yemek yemeyin</li>
+                            </ul>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-sm">
+                            <h4 class="font-semibold text-purple-800 mb-2">
+                                <i class="fas fa-running mr-2"></i>Yarış Sırasında
+                            </h4>
+                            <ul class="text-sm text-purple-700 space-y-1">
+                                <li>• Uzun yarışlarda: 5-20 dk mikro uyku</li>
+                                <li>• Destek noktalarında dinlenin</li>
+                                <li>• Enerji seviyenizi izleyin</li>
+                                <li>• Güvenli yerlerde şekerleme yapın</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Conclusion Section -->
+        <section id="conclusion" class="mb-12">
+            <div class="bg-white rounded-lg shadow-lg p-8 card-hover transition-all duration-300">
+                <h2 class="text-3xl font-bold mb-6 text-gray-800">
+                    <i class="fas fa-flag mr-3 text-green-600"></i>Sonuç ve Öneriler
+                </h2>
+                
+                <div class="bg-gradient-to-r from-green-100 to-blue-100 p-6 rounded-lg mb-6">
+                    <h3 class="text-xl font-semibold mb-4 text-gray-800">
+                        <i class="fas fa-lightbulb mr-2 text-yellow-600"></i>Ana Bulgular
+                    </h3>
+                    <ul class="space-y-2 text-gray-700">
+                        <li><i class="fas fa-check text-green-600 mr-2"></i>Dayanım sporcuları normal popülasyona göre 2-3 saat daha fazla uykuya ihtiyaç duyar</li>
+                        <li><i class="fas fa-check text-green-600 mr-2"></i>Uyku kalitesi yarış performansının %33'ünü etkileyebilir</li>
+                        <li><i class="fas fa-check text-green-600 mr-2"></i>Derin uyku evresi fiziksel toparlanma için kritik öneme sahiptir</li>
+                        <li><i class="fas fa-check text-green-600 mr-2"></i>Beslenme stratejileri uyku kalitesini önemli ölçüde etkileyebilir</li>
+                        <li><i class="fas fa-check text-green-600 mr-2"></i>Gündüz şekerlemeleri performansı %5 artırabilir</li>
+                    </ul>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-blue-50 p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold mb-4 text-blue-800">
+                            <i class="fas fa-user-athlete mr-2"></i>Sporcu İçin Pratik Öneriler
+                        </h3>
+                        <ul class="space-y-2 text-blue-700 text-sm">
+                            <li>• Bireysel uyku ihtiyacınızı belirleyin (8-10 saat)</li>
+                            <li>• Düzenli uyku rutini oluşturun</li>
+                            <li>• Uyku ortamını optimize edin</li>
+                            <li>• Beslenme stratejileri uygulayın</li>
+                            <li>• Uyku kalitesini izleyin</li>
+                            <li>• Yarış stratejileri geliştirin</li>
+                        </ul>
+                    </div>
+                    <div class="bg-purple-50 p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold mb-4 text-purple-800">
+                            <i class="fas fa-users mr-2"></i>Antrenör İçin Öneriler
+                        </h3>
+                        <ul class="space-y-2 text-purple-700 text-sm">
+                            <li>• Uyku eğitimi programları düzenleyin</li>
+                            <li>• Antrenman saatlerini optimize edin</li>
+                            <li>• Sporcuların uyku kalitesini izleyin</li>
+                            <li>• Yarış öncesi uyku stratejileri planlayın</li>
+                            <li>• Beslenme uzmanıyla işbirliği yapın</li>
+                            <li>• Stres yönetimi teknikleri öğretin</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- References -->
+        <section id="references" class="mb-12">
+            <div class="bg-gray-100 rounded-lg p-6">
+                <h2 class="text-2xl font-bold mb-4 text-gray-800">
+                    <i class="fas fa-book mr-3"></i>Kaynaklar
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-600">
+                    <div>
+                        <ul class="space-y-1">
+                            <li>• Dattilo, M. et al. (2011). Sleep and muscle recovery. Medical Hypotheses, 77(2), 220-222.</li>
+                            <li>• Dos Santos, N. E. et al. (2022). Sleep and nutritional profile of endurance athletes. Sleep Science, 15, 106-114.</li>
+                            <li>• Hrozanova, M. et al. (2020). Sleep, mental strain, and training load in athletes. Frontiers in Psychology, 11, 545581.</li>
+                            <li>• Kisiolek, J. N. (2018). Sleep Effects on Performance in Ultra Endurance Triathletes. FSU.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <ul class="space-y-1">
+                            <li>• Mah, C. D. et al. (2011). Sleep extension effects on athletic performance. Sleep, 34(7), 943-950.</li>
+                            <li>• Martin, T. et al. (2018). Sleep habits of ultramarathon runners. PLoS One, 13(5), e0194705.</li>
+                            <li>• Samuels, C. (2008). Sleep, recovery, and performance in athletics. Neurologic Clinics, 26(1), 169-180.</li>
+                            <li>• Shapiro, C. M. et al. (1981). Slow-wave sleep: recovery after exercise. Science, 214(4526), 1253-1254.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="gradient-bg text-white py-8">
+        <div class="container mx-auto max-w-6xl px-4 text-center">
+            <p class="text-lg mb-2">
+                <i class="fas fa-heart mr-2"></i>Sporcularda Uyku: Kapsamlı Rehber
+            </p>
+            <p class="text-sm opacity-90">
+                Dayanım sporcuları için bilimsel kanıtlara dayalı uyku optimizasyonu stratejileri
+            </p>
+            <p class="text-sm mt-4 opacity-75">
+                © 2024 - Hazırlayan: Ümit Emre Erdoğan
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Toggle collapse functionality
+        function toggleCollapse(elementId) {
+            const element = document.getElementById(elementId);
+            element.classList.toggle('active');
+            
+            // Toggle chevron icon
+            const chevron = element.parentElement.querySelector('.fa-chevron-down');
+            if (element.classList.contains('active')) {
+                chevron.classList.remove('fa-chevron-down');
+                chevron.classList.add('fa-chevron-up');
+            } else {
+                chevron.classList.remove('fa-chevron-up');
+                chevron.classList.add('fa-chevron-down');
+            }
+        }
+
+        // Sleep Stages Chart
+        const sleepStagesCtx = document.getElementById('sleepStagesChart').getContext('2d');
+        new Chart(sleepStagesCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Derin Uyku (N3)', 'Hafif Uyku (N1+N2)', 'REM Uyku', 'Uyanıklık'],
+                datasets: [{
+                    data: [20, 50, 25, 5],
+                    backgroundColor: [
+                        '#3B82F6', '#93C5FD', '#8B5CF6', '#EF4444'
+                    ],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            usePointStyle: true,
+                            padding: 20
+                        }
+                    }
+                }
+            }
+        });
+
+        // Sleep Duration Chart
+        const sleepDurationCtx = document.getElementById('sleepDurationChart').getContext('2d');
+        new Chart(sleepDurationCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Genel Popülasyon', 'Rekreasyonel Sporcular', 'Elit Sporcular', 'Ultra Dayanıklılık'],
+                datasets: [{
+                    label: 'Uyku Süresi (saat)',
+                    data: [7.5, 8, 9, 10],
+                    backgroundColor: ['#EF4444', '#F59E0B', '#10B981', '#3B82F6'],
+                    borderRadius: 8
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 12,
+                        title: {
+                            display: true,
+                            text: 'Saat'
+                        }
+                    }
+                }
+            }
+        });
+
+        // Factors Chart
+        const factorsCtx = document.getElementById('factorsChart').getContext('2d');
+        new Chart(factorsCtx, {
+            type: 'radar',
+            data: {
+                labels: ['Antrenman Zamanı', 'Beslenme', 'Stres Seviyesi', 'Çevresel Faktörler', 'Seyahat', 'Yaralanma'],
+                datasets: [{
+                    label: 'Uyku Kalitesine Etki (%)',
+                    data: [85, 70, 90, 60, 75, 65],
+                    backgroundColor: 'rgba(59, 130, 246, 0.2)',
+                    borderColor: 'rgba(59, 130, 246, 1)',
+                    borderWidth: 2,
+                    pointBackgroundColor: 'rgba(59, 130, 246, 1)'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    }
+                },
+                scales: {
+                    r: {
+                        beginAtZero: true,
+                        max: 100,
+                        ticks: {
+                            stepSize: 20
+                        }
+                    }
+                }
+            }
+        });
+
+        // Recovery Chart
+        const recoveryCtx = document.getElementById('recoveryChart').getContext('2d');
+        new Chart(recoveryCtx, {
+            type: 'line',
+            data: {
+                labels: ['4 saat', '5 saat', '6 saat', '7 saat', '8 saat', '9 saat', '10 saat'],
+                datasets: [{
+                    label: 'Performans Skoru',
+                    data: [40, 55, 70, 85, 95, 98, 100],
+                    borderColor: '#10B981',
+                    backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                    fill: true,
+                    tension: 0.4,
+                    pointRadius: 6,
+                    pointBackgroundColor: '#10B981'
+                }, {
+                    label: 'Toparlanma Hızı',
+                    data: [30, 45, 60, 80, 90, 95, 98],
+                    borderColor: '#3B82F6',
+                    backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                    fill: true,
+                    tension: 0.4,
+                    pointRadius: 6,
+                    pointBackgroundColor: '#3B82F6'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        title: {
+                            display: true,
+                            text: 'Yüzde (%)'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Uyku Süresi'
+                        }
+                    }
+                }
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll-to-top functionality
+        window.addEventListener('scroll', function() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            if (scrollTop > 100) {
+                if (!document.querySelector('#scrollToTop')) {
+                    const scrollBtn = document.createElement('button');
+                    scrollBtn.id = 'scrollToTop';
+                    scrollBtn.innerHTML = '<i class="fas fa-arrow-up"></i>';
+                    scrollBtn.className = 'fixed bottom-4 right-4 bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition-colors z-50';
+                    scrollBtn.onclick = () => window.scrollTo({top: 0, behavior: 'smooth'});
+                    document.body.appendChild(scrollBtn);
+                }
+            } else {
+                const scrollBtn = document.querySelector('#scrollToTop');
+                if (scrollBtn) {
+                    scrollBtn.remove();
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+    <script id="html_badge_script1">
+        window.__genspark_remove_badge_link = "https://www.genspark.ai/api/html_badge/" +
+            "remove_badge?token=To%2FBnjzloZ3UfQdcSaYfDrApxA8IMw8Q%2Ft8dJzHrU4WfELxxSYNX1b3cdfGxMAqi2o9%2Fz5j2g7U18SbtQUw6qyodiCKCT4Ze2wwwZSkOzvIZ2dA%2Fy7IyRHBxiXqVvYeGXVCbC%2Bd19MwjN3s3GrmhZ0%2FIw0fY7h9V2VbV4VHp2Q6%2Bc5gadbEotoW03Je9HXwDWW2hpkF5zvnVGS9DoS0psOYH3g0R89lyRghrfHthIXYGYPUyoIS3%2BkA%2FShY9E7yd7xegJQr76WHIRCaKG7%2FG3qiUU%2BWZYsB4pS3mr95gKIBvPIg7ofVvaafAKyBtZeMk6CRWaJAUts8N%2BwALQYPcGd51l0PPsL2TKABWJb2IzJnmY6NFu6UhaBSFjcSjssZ1Lt99qJxVN21qKl45H6MWV4w6sr8jRAKTtyJDKP7UzCOpH4TrgNIfCwrQKylpxHVAQnILx1Y6ObV9GAxpueql%2BXb%2FXB1bqTARDIFhcPpv%2Bmihmy6GM53Yvk5YdpnC%2F62MOn7ImRYcLw6h6a0jo37P3FT2sJc3r%2FHzVEXYPZMTeSQ%3D";
+        window.__genspark_locale = "en-US";
+        window.__genspark_token = "To/BnjzloZ3UfQdcSaYfDrApxA8IMw8Q/t8dJzHrU4WfELxxSYNX1b3cdfGxMAqi2o9/z5j2g7U18SbtQUw6qyodiCKCT4Ze2wwwZSkOzvIZ2dA/y7IyRHBxiXqVvYeGXVCbC+d19MwjN3s3GrmhZ0/Iw0fY7h9V2VbV4VHp2Q6+c5gadbEotoW03Je9HXwDWW2hpkF5zvnVGS9DoS0psOYH3g0R89lyRghrfHthIXYGYPUyoIS3+kA/ShY9E7yd7xegJQr76WHIRCaKG7/G3qiUU+WZYsB4pS3mr95gKIBvPIg7ofVvaafAKyBtZeMk6CRWaJAUts8N+wALQYPcGd51l0PPsL2TKABWJb2IzJnmY6NFu6UhaBSFjcSjssZ1Lt99qJxVN21qKl45H6MWV4w6sr8jRAKTtyJDKP7UzCOpH4TrgNIfCwrQKylpxHVAQnILx1Y6ObV9GAxpueql+Xb/XB1bqTARDIFhcPpv+mihmy6GM53Yvk5YdpnC/62MOn7ImRYcLw6h6a0jo37P3FT2sJc3r/HzVEXYPZMTeSQ=";
+    </script>
+    
+    <script id="html_notice_dialog_script" src="https://www.genspark.ai/notice_dialog.js"></script>
+    
